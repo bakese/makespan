@@ -1,4 +1,5 @@
 import { Delivery, DeliverySchedule } from "../types/deliveries";
+import assignVehicle from "./assignVehicle";
 import availableVehicles from "./availableVehicles";
 
 /**
@@ -17,20 +18,24 @@ async function scheduleDeliveries(
     const currentDelivery = deliveries[i];
     const transportVehicles = currentDelivery.transportVehicles;
 
-    //iterate over current deliveries transportVehicles
+    //iterate over currentDelivery's specified transportVehicles order
     for (let j = 0; j < transportVehicles.length; j++) {
       const vehicleNeeded = transportVehicles[j];
       try {
-        const availableVehiclesX = await availableVehicles(
+        //determine if there is a vehicle available
+        const vehicles = await availableVehicles(
           currentDelivery,
           vehicleNeeded
         );
 
-        console.log("availableVehicles", availableVehiclesX);
-        //assign a vehicle and update count
-        //update schedule
+        if (Object.keys(vehicles).length <= 0) {
+          throw new Error("Error: Not Enough Vehicles to Make Delivery.");
+        }
+
+        //assign the vehicle and update schedule and makespan
+        await assignVehicle(vehicles, vehicleNeeded, schedule, currentDelivery);
       } catch (err) {
-        console.log("ERROR in scheduleDeliveries try catch::", err);
+        console.log(err);
         break;
       }
     }

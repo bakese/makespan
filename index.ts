@@ -6,13 +6,13 @@ dotenv.config();
 const app: Express = express();
 const port = process.env.PORT;
 
-app.get("/", (req: Request, res: Response) => {
-  const makespan = totalDeliveryTime();
-  res.send(makespan);
+app.get("/", async (req: Request, res: Response) => {
+  const makespanSchedule = await createDeliverySchedule();
+  res.send(makespanSchedule);
 });
 
 app.listen(port, () => {
-  console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
+  console.log(`[server]: Server is running at http://localhost:${port}`);
 });
 
 import dummyDeliveries from "./src/dummyData/dummyDeliveries";

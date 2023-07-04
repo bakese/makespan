@@ -23,12 +23,16 @@ type DeliverySize = {
 };
 
 /**
+ * `DeliveryRecord` type, single delivery record as a subtype of type `DeliverySchedule`.
+ */
+export type DeliveryRecord =
+  | Record<Delivery["uuid"], Record<"deliveryTime", number>>
+  | Record<Delivery["uuid"], "Undeliverable: Not Enough Vehicles">;
+
+/**
  * `DeliverySchedule` type, schedule of type `Delivery`.
  */
 export type DeliverySchedule = {
   makespan: number | undefined;
-  deliveries:
-    | Record<Delivery["uuid"], Record<"deliveryTime", number>>
-    | Record<Delivery["uuid"], "Undeliverable: Not Enough Vehicles">
-    | undefined;
+  deliveries: DeliveryRecord | undefined;
 };
