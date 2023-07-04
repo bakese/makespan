@@ -25,14 +25,11 @@ export default async function (
     schedule.deliveries = {};
   }
 
-  console.log("***", schedule.deliveries);
-
   //update schedule
   if (!schedule.deliveries[currentDelivery.uuid]) {
     schedule.deliveries[currentDelivery.uuid] = {
       deliveryTime: selectedVehicle,
     };
-    console.log("@@@", schedule.deliveries);
   } else {
     schedule.deliveries[currentDelivery.uuid] = {
       deliveryTime: selectedVehicle,
