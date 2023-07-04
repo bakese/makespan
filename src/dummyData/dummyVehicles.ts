@@ -1,18 +1,31 @@
 import type { Vehicle } from "../types/vehicles";
 
-export const dummyTrucks: Vehicle = {
-  type: "Truck",
-  duration: 350,
-  numAvailable: 1,
+export let trucks: Vehicle = {
+  350: {
+    numAvailable: 4,
+  },
+  500: {
+    numAvailable: 0,
+  },
+  100: {
+    numAvailable: 7,
+  },
+  50: {
+    numAvailable: 10,
+  },
 };
 
-export const dummyPlanes: Vehicle = {
-  type: "Plane",
-  duration: 350,
-  numAvailable: 1,
-};
-
-export default {
-  dummyTrucks,
-  dummyPlanes,
+export let planes: Vehicle = {
+  350: {
+    numAvailable: 4,
+  },
+  500: {
+    numAvailable: 2,
+  },
+  100: {
+    numAvailable: 7,
+  },
+  50: {
+    numAvailable: 10,
+  },
 };

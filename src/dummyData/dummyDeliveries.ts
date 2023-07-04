@@ -2,8 +2,8 @@ import type { Delivery } from "../types/deliveries";
 
 const dummyDeliveries: Delivery[] = [
   {
-    uuid: "1",
-    duration: 500,
+    uuid: 1,
+    duration: 250,
     transportVehicles: ["Truck"],
     size: {
       width: 12,
@@ -15,9 +15,9 @@ const dummyDeliveries: Delivery[] = [
     perishable: false,
   },
   //   {
-  //     uuid: "2",
+  //     uuid: 2,
   //     duration: 500,
-  //     transportVehicles: ["Truck", "Plane"],
+  //     transportVehicles: ["Truck", "Plane", "Truck"],
   //     size: {
   //       width: 24,
   //       height: 24,
