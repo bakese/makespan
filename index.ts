@@ -22,7 +22,6 @@ function createDeliverySchedule() {
   return new Promise(async (resolve, reject) => {
     try {
       const schedule = await scheduleDeliveries(dummyDeliveries);
-      console.log("*****: Schedule:", schedule);
       resolve(schedule);
     } catch (err) {
       reject(err);
