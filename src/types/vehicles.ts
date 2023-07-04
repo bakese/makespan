@@ -7,7 +7,7 @@ export type TransportVehicles = "Truck" | "Plane";
  * `Vehicles` type, used as a type for vehicles.
  */
 export type Vehicle = {
-  type: TransportVehicles;
-  duration: number;
-  numAvailable: number;
+  [duration: number]: {
+    numAvailable: number;
+  };
 };

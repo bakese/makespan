@@ -16,22 +16,18 @@ app.listen(port, () => {
 });
 
 import dummyDeliveries from "./src/dummyData/dummyDeliveries";
-import { dummyPlanes, dummyTrucks } from "./src/dummyData/dummyVehicles";
-import assignDeliveries from "./src/utils/assignDeliveries";
+import scheduleDeliveries from "./src/utils/scheduleDeliveries";
 
-function totalDeliveryTime() {
+function createDeliverySchedule() {
   return new Promise(async (resolve, reject) => {
     try {
-      const makespan = await assignDeliveries(
-        dummyDeliveries,
-        dummyTrucks,
-        dummyPlanes
-      );
-      console.log("*****: Makespan:", makespan, " Hours");
-      resolve(makespan);
+      const schedule = await scheduleDeliveries(dummyDeliveries);
+      console.log("*****: Schedule:", schedule);
+      resolve(schedule);
     } catch (err) {
       reject(err);
     }
   });
 }
-totalDeliveryTime();
+
+createDeliverySchedule();
